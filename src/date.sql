@@ -29,4 +29,5 @@ INSERT INTO didi.`calendar` (date, is_holiday) VALUES
 ("2016-01-28", FALSE),
 ("2016-01-29", FALSE),
 ("2016-01-30", TRUE),
-("2016-01-31", TRUE);
+("2016-01-31", TRUE)
+ON DUPLICATE KEY UPDATE date = date;
