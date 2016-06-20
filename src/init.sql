@@ -49,7 +49,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `didi`.`district` (
   `district_hash` VARCHAR(45) NOT NULL,
   `district_id` INT NULL,
-  `poi` INT NULL,
   PRIMARY KEY (`district_hash`)
 )
 ENGINE = InnoDB;
@@ -79,6 +78,17 @@ CREATE TABLE IF NOT EXISTS `didi`.`order` (
   `date` VARCHAR(45) NULL,
   `time_slot` INT NULL,
   PRIMARY KEY (`order_id`)
+)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `didi`.`poi`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `didi`.`poi` (
+  `district_hash` VARCHAR(45) NOT NULL,
+  `poi` TEXT NULL,
+  PRIMARY KEY (`district_hash`)
 )
 ENGINE = InnoDB;
 
