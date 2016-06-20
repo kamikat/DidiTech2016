@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=46ee1c3c3f82e09c034ccb6ad3e8031e63c4c966
+      - MYSQL_DATABASE=emirya
+      - MYSQL_USER=orz
+      - MYSQL_PASSWORD=266cbf5f76bd39b1c4c235d08cfdb7c3f1a87613
+    ports:
+      - "3306:3306"
