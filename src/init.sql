@@ -31,14 +31,13 @@ ENGINE = InnoDB;
 -- Table `didi`.`traffic`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `didi`.`traffic` (
-  `district_hash` VARCHAR(45) NOT NULL,
+  `district_hash` VARCHAR(45) NULL,
   `level_1` INT NULL,
   `level_2` INT NULL,
   `level_3` INT NULL,
   `level_4` INT NULL,
   `date` VARCHAR(45) NULL,
-  `time_slot` INT NULL,
-  PRIMARY KEY (`district_hash`)
+  `time_slot` INT NULL
 )
 ENGINE = InnoDB;
 
@@ -86,9 +85,10 @@ ENGINE = InnoDB;
 -- Table `didi`.`poi`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `didi`.`poi` (
-  `district_hash` VARCHAR(45) NOT NULL,
-  `poi` TEXT NULL,
-  PRIMARY KEY (`district_hash`)
+  `district_hash` VARCHAR(45) NULL,
+  `type` VARCHAR(45) NULL,
+  `subtype` VARCHAR(45) NULL,
+  `count` INT NULL
 )
 ENGINE = InnoDB;
 
