@@ -14,10 +14,9 @@ with open(sys.argv[1], "r") as data:
     while line:
         if count == 0:
             print 'INSERT INTO didi.`order` (order_id, driver_id, passenger_id, start_district_hash, dest_district_hash, price, date, time_slot) VALUES',
-        (order_id, driver_id, passenger_id, start_district_hash, dest_district_hash, price, datetime) = line.split('\t')
-        datetime = datetime.split(" ")
-        time_slot = datetime[1].split(":")
-        time_slot = int(time_slot[0]) * 6 + int(time_slot[1]) / 10 + 1
+        (order_id, driver_id, passenger_id, start_district_hash, dest_district_hash, price, date, time) = line.split()
+        time = time.split(':')
+        time_slot = int(time[0]) * 6 + int(time[1]) / 10 + 1
         line = data.readline()
         print '(%s, %s, %s, %s, %s, %s, %s, %d)' % (
                 nullable_string(order_id),
@@ -26,7 +25,7 @@ with open(sys.argv[1], "r") as data:
                 nullable_string(start_district_hash),
                 nullable_string(dest_district_hash),
                 price,
-                nullable_string(datetime[0]),
+                nullable_string(date),
                 time_slot),
         count += 1
         if count == 100:

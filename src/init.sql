@@ -7,7 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema didi
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `didi` ;
 
 -- -----------------------------------------------------
 -- Schema didi
@@ -18,8 +17,6 @@ USE `didi` ;
 -- -----------------------------------------------------
 -- Table `didi`.`weather`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `didi`.`weather` ;
-
 CREATE TABLE IF NOT EXISTS `didi`.`weather` (
   `date` VARCHAR(45) NULL,
   `time_slot` INT NULL,
@@ -33,8 +30,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `didi`.`traffic`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `didi`.`traffic` ;
-
 CREATE TABLE IF NOT EXISTS `didi`.`traffic` (
   `district_hash` VARCHAR(45) NOT NULL,
   `level_1` INT NULL,
@@ -51,14 +46,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `didi`.`district`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `didi`.`district` ;
-
 CREATE TABLE IF NOT EXISTS `didi`.`district` (
   `district_hash` VARCHAR(45) NOT NULL,
   `district_id` INT NULL,
-  `poi_1` INT NULL,
-  `poi_2` INT NULL,
-  `poi_3` INT NULL,
+  `poi` INT NULL,
   PRIMARY KEY (`district_hash`)
 )
 ENGINE = InnoDB;
@@ -67,8 +58,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `didi`.`calendar`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `didi`.`calendar` ;
-
 CREATE TABLE IF NOT EXISTS `didi`.`calendar` (
   `date` VARCHAR(45) NOT NULL,
   `is_holiday` TINYINT(1) NULL,
@@ -80,8 +69,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `didi`.`order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `didi`.`order` ;
-
 CREATE TABLE IF NOT EXISTS `didi`.`order` (
   `order_id` VARCHAR(45) NOT NULL,
   `driver_id` VARCHAR(45) NULL,
