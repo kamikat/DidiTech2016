@@ -34,7 +34,7 @@ is_train = np.random.uniform(0, 1, len(dataset)) <= .75
 training, testingSet = dataset[is_train], dataset[~is_train]
 
 # train model
-model = RandomForestRegressor(n_estimators=100, n_jobs=-1)
+model = RandomForestRegressor(n_estimators=int(sys.argv[2]), n_jobs=-1)
 model.fit(training[:,:-1], training[:,-1])
 
 # importance vector
@@ -42,7 +42,7 @@ print zip([
     "district_hash","date","time_slot","is_holiday",
     "weather","temperature","pm25",
     "level_1","level_2","level_3","level_4"] +
-    [ "poi_%d" % x for x in range(1, 25) ], model.feature_importances_)
+    [ "poi_%d" % x for x in range(0, 25) ], model.feature_importances_)
 
 def predict(model, testing):
     prediction = model.predict(testing[:,:-1])
