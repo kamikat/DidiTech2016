@@ -15,9 +15,9 @@ with open(sys.argv[1], "r") as data:
         print '("%s", %d, %s, %s, %s)' % (date, time_slot, weather, temperature, pm25),
         count += 1
         if count == 100:
-            print ';'
+            print 'ON DUPLICATE KEY UPDATE pm25 = pm25;'
             count = 0
             continue
         if line:
             print ',',
-    print ';'
+    print 'ON DUPLICATE KEY UPDATE pm25 = pm25;'

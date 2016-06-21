@@ -18,11 +18,12 @@ USE `didi` ;
 -- Table `didi`.`weather`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `didi`.`weather` (
-  `date` VARCHAR(45) NULL,
-  `time_slot` INT NULL,
+  `date` VARCHAR(45) NOT NULL,
+  `time_slot` INT NOT NULL,
   `weather` INT NULL,
   `temperature` DOUBLE NULL,
-  `pm25` DOUBLE NULL)
+  `pm25` DOUBLE NULL,
+  PRIMARY KEY (`date`, `time_slot`))
 ENGINE = InnoDB;
 
 
@@ -30,13 +31,14 @@ ENGINE = InnoDB;
 -- Table `didi`.`traffic`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `didi`.`traffic` (
-  `district_hash` VARCHAR(45) NULL,
+  `district_hash` VARCHAR(45) NOT NULL,
   `level_1` INT NULL,
   `level_2` INT NULL,
   `level_3` INT NULL,
   `level_4` INT NULL,
-  `date` VARCHAR(45) NULL,
-  `time_slot` INT NULL)
+  `date` VARCHAR(45) NOT NULL,
+  `time_slot` INT NOT NULL,
+  PRIMARY KEY (`district_hash`, `date`, `time_slot`))
 ENGINE = InnoDB;
 
 
@@ -80,10 +82,11 @@ ENGINE = InnoDB;
 -- Table `didi`.`poi`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `didi`.`poi` (
-  `district_hash` VARCHAR(45) NULL,
-  `type` INT NULL,
-  `subtype` VARCHAR(45) NULL,
-  `count` INT NULL)
+  `district_hash` VARCHAR(45) NOT NULL,
+  `type` INT NOT NULL,
+  `subtype` VARCHAR(45) NOT NULL,
+  `count` INT NULL,
+  PRIMARY KEY (`district_hash`, `type`, `subtype`))
 ENGINE = InnoDB;
 
 
