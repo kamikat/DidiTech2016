@@ -22,8 +22,7 @@ CREATE TABLE IF NOT EXISTS `didi`.`weather` (
   `time_slot` INT NULL,
   `weather` INT NULL,
   `temperature` DOUBLE NULL,
-  `pm25` DOUBLE NULL
-)
+  `pm25` DOUBLE NULL)
 ENGINE = InnoDB;
 
 
@@ -37,8 +36,7 @@ CREATE TABLE IF NOT EXISTS `didi`.`traffic` (
   `level_3` INT NULL,
   `level_4` INT NULL,
   `date` VARCHAR(45) NULL,
-  `time_slot` INT NULL
-)
+  `time_slot` INT NULL)
 ENGINE = InnoDB;
 
 
@@ -48,8 +46,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `didi`.`district` (
   `district_hash` VARCHAR(45) NOT NULL,
   `district_id` INT NULL,
-  PRIMARY KEY (`district_hash`)
-)
+  PRIMARY KEY (`district_hash`))
 ENGINE = InnoDB;
 
 
@@ -59,8 +56,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `didi`.`calendar` (
   `date` VARCHAR(45) NOT NULL,
   `is_holiday` TINYINT(1) NULL,
-  PRIMARY KEY (`date`)
-)
+  PRIMARY KEY (`date`))
 ENGINE = InnoDB;
 
 
@@ -76,8 +72,7 @@ CREATE TABLE IF NOT EXISTS `didi`.`order` (
   `price` DOUBLE NULL,
   `date` VARCHAR(45) NULL,
   `time_slot` INT NULL,
-  PRIMARY KEY (`order_id`)
-)
+  PRIMARY KEY (`order_id`))
 ENGINE = InnoDB;
 
 
@@ -86,14 +81,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `didi`.`poi` (
   `district_hash` VARCHAR(45) NULL,
-  `type` VARCHAR(45) NULL,
+  `type` INT NULL,
   `subtype` VARCHAR(45) NULL,
-  `count` INT NULL
-)
+  `count` INT NULL)
 ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-

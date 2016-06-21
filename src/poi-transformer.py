@@ -14,6 +14,6 @@ with open(sys.argv[1], "r") as data:
                 t, sub = poi.split('#', 1)
             else:
                 t, sub = (poi, '')
-            tu.append('("%s", "%s", "%s", %s)' % (record[0], t, sub, c))
+            tu.append('("%s", %s, "%s", %s)' % (record[0], t, sub, c))
         print ','.join(tu) + ';'
         line = data.readline()
