@@ -47,8 +47,6 @@ print zip([
 def predict(model, testing):
     prediction = model.predict(testing[:,:-1])
     validation = np.array(testing[:,-1], dtype=np.float)
-    print prediction
-    print validation
     prediction = prediction[np.nonzero(validation)]
     validation = validation[np.nonzero(validation)]
     return np.average(np.abs(prediction - validation) / validation)
