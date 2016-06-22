@@ -53,21 +53,24 @@ def perform(dataset, k):
     training, testing = split(dataset)
     model = train(training, k)
     # importance vector
-    print >>sys.stderr, "Importances:", zip([
+    print >>sys.stderr, "Importance:", dict(zip([
         "district_hash","date","time_slot","is_holiday",
         "weather","temperature","pm25",
         "level_1","level_2","level_3","level_4"] +
-        [ "poi_%d" % x for x in range(0, 25) ], model.feature_importances_)
+        [ "poi_%d" % x for x in range(0, 25) ], model.feature_importances_))
     maps = predict(model, testing)
-    print >>sys.stderr, "MAPS =", maps
+    print >>sys.stderr, "MAPS:", maps
     # tree.export_graphviz(model.estimators_[0].tree_)
     return maps
 
-def measure(indexing, k):
-    return np.average([ perform(dataset[indexing], k) for i in xrange(1, 10) ])
+def measure(district_id, k):
+    print >>sys.stderr, "=" * 42
+    print >>sys.stderr, "District:", district.inverse_transform(district_id)
+    print >>sys.stderr, "=" * 42
+    avg = np.average([ perform(dataset[dataset[:,0].astype(int) == district_id], k) for i in xrange(1, 10) ])
+    print >>sys.stderr, "-" * 42
+    print >>sys.stderr, "AVG(MAPS[%s]) =" % district.inverse_transform(district_id), avg
+    return avg
 
-for district_id in np.unique(dataset[:,0]).astype(int):
-    print "%s: %f" % (
-            district.inverse_transform(district_id),
-            measure(dataset[:,0].astype(int) == district_id, 32))
+print np.average([ measure(district_id, int(sys.argv[2])) for district_id in np.unique(dataset[:,0]).astype(int) ])
 
