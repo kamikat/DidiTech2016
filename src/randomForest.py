@@ -56,6 +56,7 @@ def perform(model):
         [ "poi_%d" % x for x in range(0, 25) ], model.feature_importances_)
     print "MAPS =", predict(model, testingSet)
     print
+    tree.export_graphviz(model.estimators_[0].tree_)
 
 perform(train(10))
 perform(train(100))
